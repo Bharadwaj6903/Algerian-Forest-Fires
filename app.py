@@ -38,5 +38,26 @@ def predict_datapoint():
     else:
         return render_template('home.html')
 
+@app.route('/api/predict/',methods=["POST"])
+def api_product():
+    
+    if request.method=='POST':
+        data = request.get_json(force=True)
+        Temperature=float(data['Temperature'])
+        RH = float(data['RH'])
+        Ws = float(data['Ws'])
+        Rain = float(data['Rain'])
+        FFMC = float(data['FFMC'])
+        DMC = float(data['DMC'])
+        ISI = float(data['ISI'])
+        Classes = float(data['Classes'])
+        Region = float(data['Region'])
+
+        new_data_scaled=standard_scaler.transform([[Temperature,RH,Ws,Rain,FFMC,DMC,ISI,Classes,Region]])
+        result=ridge_model.predict(new_data_scaled)
+
+        return jsonify(results:result[0])
+
+
 if __name__=="__main__":
     app.run(host="0.0.0.0")
