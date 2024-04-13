@@ -1,1 +1,1 @@
-# Algerian_Forest_Fires
+This project predicts the forest fires occurs in Algerian forest or not
