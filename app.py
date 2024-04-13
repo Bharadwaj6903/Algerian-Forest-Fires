@@ -56,7 +56,7 @@ def api_product():
         new_data_scaled=standard_scaler.transform([[Temperature,RH,Ws,Rain,FFMC,DMC,ISI,Classes,Region]])
         result=ridge_model.predict(new_data_scaled)
 
-        return jsonify(results:result[0])
+        return jsonify({results:result[0]})
 
 
 if __name__=="__main__":
