@@ -3,3 +3,4 @@ numpy
 pandas
 scikit-learn
 requests
+gunicorn==20.0.1
